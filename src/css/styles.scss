@@ -1,0 +1,93 @@
+body{
+    background:#2980b9;
+    min-height: 100vh;
+    min-width:100vw;
+    padding:50px;
+    overflow-x: scroll;
+}
+.todoMain{
+    h2{
+        margin-top: 0;
+    }
+}
+.todoWall{
+    display:flex;
+}
+
+$todoBG:#bdc3c7;
+$cardWidth:300px;
+.todoGroup{
+    
+    .todoCard{
+        margin-top: 10px;
+        background: $todoBG;
+        padding:10px 10px 10px 10px;
+        width:$cardWidth;
+        border-radius:10px;
+    }
+    margin-right: 30px;
+    
+
+
+    
+    
+    
+    .addNewToDo{
+        padding:5px;
+        text-align: center;
+        position:relative;
+        &:hover{
+            background-color:lighten($todoBG,5%);
+        }
+        strong{
+            cursor: pointer;
+        }
+        input,button{
+                width:100%;
+            margin-top: 10px;
+            }
+        .form-control{
+            border-radius:10px;
+            padding:10px;
+        }
+    }
+    ul{
+        padding-left: 0;
+        li{
+            position:relative;
+            &:hover{
+                transform: scale(1.05);
+            }
+            i{
+                position: absolute;
+                top:50%;
+                transform: translateY(-50%);
+                font-size:20px;
+            }
+            
+            p{
+                margin:0;
+            }
+            .fa-check{
+                right: 30px;
+                color:green;
+                &:hover{
+                    color:lighten(green,25%);
+                }
+            }
+            .fa-times{
+                right: 5px;
+                color:red;
+                &:hover{
+                    color:darken(red,25%);
+                }
+            }
+            list-style: none;
+            background: #ecf0f1; 
+            padding:5px 10px;
+            padding-right: 30px;
+            margin-bottom: 10px;
+            border-radius:10px;
+        }
+    }
+}
