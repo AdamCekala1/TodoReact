@@ -3,11 +3,11 @@ import Todo from './Todo';
 
 const TodoCard = (props) =>{
     return(
-        <div key={props.i} className='todoGroup'>
-            {props.items.date}
+        <div key={props.i} className='todoGroup col-xs-12 col-md-6 col-lg-3'>
+
             <div className='todoCard'>
-                <h4>Todo Name</h4>
-                <h4>data dodania xx-xx-xxxx</h4>
+                <h4>{props.items.name}</h4>
+                <h4>data {props.items.date}</h4>
                 <ul>
                     {props.items.list.map((item,j)=>{
                         return(

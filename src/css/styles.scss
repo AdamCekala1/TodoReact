@@ -1,60 +1,76 @@
 body{
     background:#2980b9;
     min-height: 100vh;
-    min-width:100vw;
     padding:50px;
-    overflow-x: scroll;
-}
-.todoMain{
-    h2{
-        margin-top: 0;
-    }
-}
-.todoWall{
-    display:flex;
 }
 
+//by nie bylo marginesow za duzych
+h2{
+    margin:0;
+}
+
+
+//kolor kart
 $todoBG:#bdc3c7;
-$cardWidth:300px;
-.todoGroup{
-    
+
+
+//stylowanie karty do dodawania nowych kart
+.newCardRow{
+    >.input-group{
+        left:50%!important;
+        transform: translateX(-50%);
+        text-align: center;
+        }
+}
+
+
+//todoGroup zawiera w sobie karte
+.todoGroup{  
+    //stylizowanie karty
     .todoCard{
         margin-top: 10px;
         background: $todoBG;
         padding:10px 10px 10px 10px;
-        width:$cardWidth;
         border-radius:10px;
-    }
-    margin-right: 30px;
-    
-
-
-    
-    
-    
+        
+    } 
+    //formularz dodawania nowego todo do karty
     .addNewToDo{
+        //aby nie nadpisalo polozenia input-group
+        .input-group{
+            left:0;
+        }
         padding:5px;
         text-align: center;
         position:relative;
+        //delikatne przejscia
+        transition: all 0.3s;
+        //zmiana koloru po najechaniu
         &:hover{
             background-color:lighten($todoBG,5%);
         }
+        //zmiana kursora
         strong{
             cursor: pointer;
         }
+        //wielkosc inputow i przyciskow
         input,button{
-                width:100%;
+            width:100%;
             margin-top: 10px;
             }
+        //zaokraglenia form
         .form-control{
             border-radius:10px;
             padding:10px;
         }
     }
+    //stylizowanie listy todo w karcie
     ul{
         padding-left: 0;
         li{
             position:relative;
+            //delikatne przejscia
+            transition: all 0.3s;
             &:hover{
                 transform: scale(1.05);
             }
@@ -90,4 +106,39 @@ $cardWidth:300px;
             border-radius:10px;
         }
     }
+}
+
+
+
+
+// Wyrownanie kart todo aby nie przeskakiwaly
+
+.row.is-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+.row.is-flex > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+.is-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.row.is-flex > [class*='col-'] {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
 }

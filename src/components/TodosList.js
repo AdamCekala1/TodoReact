@@ -2,12 +2,17 @@ import React from 'react';
 import uuid from 'node-uuid'; //unikalne id
 import AddForm from './AddForm'; //form do dodawania nowych zadan
 import TodoCard from './TodoCard'; // cala karta Todo, zawiera liste zadan
+import NewCard from './NewCard'; // cala karta Todo, zawiera liste zadan
 
 
 class TodosList extends React.Component{
     //konstruktor
     constructor(){
         super();
+        //pomocnicze zamaist w state by nie renderowac caly czas zawartosci state
+        this.newTodoCardName = '';
+        this.newTodoCardDate = '';
+        this.newTodoCardVal = '';
         //styl do kreslenia zrobionego zadania
         this.doneStyle={
             textDecoration: 'line-through',
@@ -19,6 +24,7 @@ class TodosList extends React.Component{
                 {
                     id:uuid(),
                     date:'xx-xx-xxxx',
+                    name:'wazne',
                     list:[
                     {
                         id:uuid(),
@@ -40,6 +46,7 @@ class TodosList extends React.Component{
                 },{
                     id:uuid(),
                     date:'xx-xx-xxxx',
+                    name:'zakupy',
                     list:[{
                         id:uuid(),
                         done:false,
@@ -60,6 +67,7 @@ class TodosList extends React.Component{
                 },{
                     id:uuid(),
                     date:'xx-xx-xxxx',
+                    name:'todo',
                     list:[{
                         id:uuid(),
                         done:false,
@@ -80,6 +88,7 @@ class TodosList extends React.Component{
                 },{
                     id:uuid(),
                     date:'xx-xx-xxxx',
+                    name:'pranie',
                     list:[{
                         id:uuid(),
                         done:false,
@@ -112,6 +121,7 @@ class TodosList extends React.Component{
     }
     //dodanie nowego zadania do listy
     addTodoHandler=(e,i,items)=>{
+        e.preventDefault();
         let newTodo = {content:this.state.newTodoValue.value,id:uuid(),done:false}
         let update = this.state.todos
         if(i == this.state.newTodoValue.id){
@@ -130,6 +140,22 @@ class TodosList extends React.Component{
                 value:value
             }
         })
+    }
+    rememberValueName=(value)=>{
+        this.newTodoCardName = value;
+//        this.setState({
+//            newTodoCardName:value
+//        })
+    }
+    rememberValueDate=(value)=>{
+        
+            this.newTodoCardDate=value
+        
+    }
+    rememberValueTodo=(value)=>{
+        
+            this.newTodoCardVal=value
+       
     }
     
     //usuwanie danego zadania z listy
@@ -200,18 +226,51 @@ class TodosList extends React.Component{
         })
        return todosLists;
     }
+    newCardHandler=(e)=>{
+        e.preventDefault();
+        let todos = this.state.todos;
+        let name = this.newTodoCardName
+        let date = this.newTodoCardDate
+        let newTodo = this.newTodoCardVal
+        
+        if(name.length!==0 && date.length!==0 && newTodo.length!==0){
+            todos = [...todos,
+                     {name:name,
+                      date:date,id:uuid(),
+                      list:[{
+                          content:newTodo,
+                          id:uuid(),
+                          done:false
+                      }]}]
+                this.setState({todos:todos})
+                
+            }
+
+      
+        
+    }
     //renderowanie wlasciwe
     render(){
         return(
             
             <div className='todoMain'>
-                <h2></h2>
-                <h2>TodoList like Trello</h2>
-                <div className='todoWall'>
+             <h2>TodoList</h2>
+                <NewCard 
+                    newCardHandler={this.newCardHandler}
+                    rememberValueDate={this.rememberValueDate}
+                    rememberValueName={this.rememberValueName}
+                    rememberValueTodo={this.rememberValueTodo}
+                    
+                    
+            />
+               
+                <div className='todoWall row is-flex'>
                     {this.generateTodos()}
                     
-                    <div className='clearfix'></div>
+                    
+                    
                 </div>
+                    
             </div>
         );
     }

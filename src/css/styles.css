@@ -1,66 +1,95 @@
 body {
   background: #2980b9;
   min-height: 100vh;
-  min-width: 100vw;
-  padding: 50px;
-  overflow-x: scroll; }
+  padding: 50px; }
 
-.todoMain h2 {
-  margin-top: 0; }
+h2 {
+  margin: 0; }
 
-.todoWall {
-  display: flex; }
+.newCardRow > .input-group {
+  left: 50% !important;
+  transform: translateX(-50%);
+  text-align: center; }
 
-.todoGroup {
-  margin-right: 30px; }
-  .todoGroup .todoCard {
-    margin-top: 10px;
-    background: #bdc3c7;
-    padding: 10px 10px 10px 10px;
-    width: 300px;
+.todoGroup .todoCard {
+  margin-top: 10px;
+  background: #bdc3c7;
+  padding: 10px 10px 10px 10px;
+  border-radius: 10px; }
+.todoGroup .addNewToDo {
+  padding: 5px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s; }
+  .todoGroup .addNewToDo .input-group {
+    left: 0; }
+  .todoGroup .addNewToDo:hover {
+    background-color: #cbd0d3; }
+  .todoGroup .addNewToDo strong {
+    cursor: pointer; }
+  .todoGroup .addNewToDo input, .todoGroup .addNewToDo button {
+    width: 100%;
+    margin-top: 10px; }
+  .todoGroup .addNewToDo .form-control {
+    border-radius: 10px;
+    padding: 10px; }
+.todoGroup ul {
+  padding-left: 0; }
+  .todoGroup ul li {
+    position: relative;
+    transition: all 0.3s;
+    list-style: none;
+    background: #ecf0f1;
+    padding: 5px 10px;
+    padding-right: 30px;
+    margin-bottom: 10px;
     border-radius: 10px; }
-  .todoGroup .addNewToDo {
-    padding: 5px;
-    text-align: center;
-    position: relative; }
-    .todoGroup .addNewToDo:hover {
-      background-color: #cbd0d3; }
-    .todoGroup .addNewToDo strong {
-      cursor: pointer; }
-    .todoGroup .addNewToDo input, .todoGroup .addNewToDo button {
-      width: 100%;
-      margin-top: 10px; }
-    .todoGroup .addNewToDo .form-control {
-      border-radius: 10px;
-      padding: 10px; }
-  .todoGroup ul {
-    padding-left: 0; }
-    .todoGroup ul li {
-      position: relative;
-      list-style: none;
-      background: #ecf0f1;
-      padding: 5px 10px;
-      padding-right: 30px;
-      margin-bottom: 10px;
-      border-radius: 10px; }
-      .todoGroup ul li:hover {
-        transform: scale(1.05); }
-      .todoGroup ul li i {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 20px; }
-      .todoGroup ul li p {
-        margin: 0; }
-      .todoGroup ul li .fa-check {
-        right: 30px;
-        color: green; }
-        .todoGroup ul li .fa-check:hover {
-          color: lime; }
-      .todoGroup ul li .fa-times {
-        right: 5px;
-        color: red; }
-        .todoGroup ul li .fa-times:hover {
-          color: maroon; }
+    .todoGroup ul li:hover {
+      transform: scale(1.05); }
+    .todoGroup ul li i {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px; }
+    .todoGroup ul li p {
+      margin: 0; }
+    .todoGroup ul li .fa-check {
+      right: 30px;
+      color: green; }
+      .todoGroup ul li .fa-check:hover {
+        color: lime; }
+    .todoGroup ul li .fa-times {
+      right: 5px;
+      color: red; }
+      .todoGroup ul li .fa-times:hover {
+        color: maroon; }
+
+.row.is-flex {
+  display: flex;
+  flex-wrap: wrap; }
+
+.row.is-flex > [class*='col-'] {
+  display: flex;
+  flex-direction: column; }
+
+.is-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+
+.row.is-flex > [class*='col-'] {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column; }
 
 /*# sourceMappingURL=styles.css.map */
